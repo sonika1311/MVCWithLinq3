@@ -31,6 +31,21 @@ namespace MVCWithLinq3.Controllers
             obj.Employee_Insert(Emp);
             return RedirectToAction("DisplayEmployees");
         }
-        
+        public ViewResult EditEmployee(int Eid)
+        {
+            EmpDept emp = obj.GetEmployee(Eid);
+            emp.Departments = obj.GetDepartments();
+            return View(emp);
+        }
+        public RedirectToRouteResult UpdateEmployee(EmpDept emp)
+        {
+            obj.Employee_Update(emp);
+            return RedirectToAction("DisplayEmployees");
+        }
+        public RedirectToRouteResult DeleteEmployee(int Eid)
+        {
+            obj.Employee_Delete(Eid);
+            return RedirectToAction("DisplayEmployees");
+        }
     }
 }

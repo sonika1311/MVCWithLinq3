@@ -76,5 +76,21 @@ namespace MVCWithLinq3.Models
             dc.Employees.InsertOnSubmit(Emp);
             dc.SubmitChanges();
         }
+        public void Employee_Update(EmpDept newEmp)
+        {
+            Employee oldEmp = dc.Employees.Single(E => E.Eid == newEmp.Eid);
+            oldEmp.Ename = newEmp.Ename;
+            oldEmp.Job = newEmp.Job;
+            oldEmp.Salary = newEmp.Salary;
+            oldEmp.Did = newEmp.Did;
+            dc.SubmitChanges();
+        }
+        public void Employee_Delete(int Eid)
+        {
+            Employee emp = dc.Employees.Single(e => e.Eid == Eid);
+            emp.Status = false;
+            //dc.Employees.DeleteOnSubmit(emp); -- for permanent deletion
+            dc.SubmitChanges();
+        }
     }
 }
