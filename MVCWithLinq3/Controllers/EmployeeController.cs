@@ -18,6 +18,19 @@ namespace MVCWithLinq3.Controllers
         {
             return View(obj.GetEmployee(Eid));
         }
+        [HttpGet]
+        public ViewResult AddEmployee()
+        {
+            EmpDept emp = new EmpDept();
+            emp.Departments = obj.GetDepartments();
+            return View(emp);
+        }
+        [HttpPost]
+        public RedirectToRouteResult AddEmployee(EmpDept Emp) 
+        { 
+            obj.Employee_Insert(Emp);
+            return RedirectToAction("DisplayEmployees");
+        }
         
     }
 }

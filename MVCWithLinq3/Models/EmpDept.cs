@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MVCWithLinq3.Models
 {
@@ -14,7 +15,6 @@ namespace MVCWithLinq3.Models
         public int? Did { get; set; }
         public string Dname { get; set; }
         public string Location { get; set; }
-
-
+        public List<SelectListItem> Departments { get; set; }
     }
 }

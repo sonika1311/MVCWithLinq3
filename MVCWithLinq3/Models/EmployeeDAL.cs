@@ -53,5 +53,28 @@ namespace MVCWithLinq3.Models
             };
             return Emp;
         }
+        public List<SelectListItem> GetDepartments()
+        {
+            List<SelectListItem> Depts = new List<SelectListItem>();
+            foreach (var Item in dc.Departments)
+            {
+                SelectListItem li = new SelectListItem { Text = Item.Dname, Value = Item.Did.ToString() };
+                Depts.Add(li);
+            }
+            return Depts;
+        }
+        public void Employee_Insert(EmpDept obj)
+        {
+            Employee Emp = new Employee
+            {
+                Ename = obj.Ename,
+                Job = obj.Job,
+                Salary = obj.Salary,
+                Did = obj.Did,
+                Status = true
+            };
+            dc.Employees.InsertOnSubmit(Emp);
+            dc.SubmitChanges();
+        }
     }
 }
